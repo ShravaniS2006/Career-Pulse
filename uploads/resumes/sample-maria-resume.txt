@@ -1,0 +1,29 @@
+=============================================================================
+MARIA GARCIA - SENIOR PRODUCT DESIGNER (UI/UX)
+Email: maria@demo.com | Phone: +1 555-0144 | Portfolio: behance.net/mariadesign
+Location: Remote / Los Angeles, CA
+=============================================================================
+
+PROFILE
+-------
+Human-centered Senior UI/UX Designer with 5+ years of experience crafting
+scalable design systems, user flows, wireframes, and intuitive mobile & web
+experiences. Specialized in SaaS B2B applications and consumer fintech.
+
+CORE COMPETENCIES
+-----------------
+- Design: User Research, Wireframing, Rapid Prototyping, Design Systems
+- Tools: Figma, FigJam, Adobe XD, Sketch, InVision, Zeplin, Miro
+- Technical: HTML5, CSS3, Basic JavaScript, Accessibility (WCAG 2.1 AA)
+
+EXPERIENCE
+----------
+Lead UI/UX Designer | Aura Digital Studio | 2021 - Present
+- Spearheaded the redesign of enterprise billing portal, boosting user retention by 28%.
+- Established comprehensive Figma Design System with 120+ reusable components.
+- Conducted 60+ user research sessions and usability test cycles.
+
+UI/UX Designer | PixelWave Labs | 2019 - 2021
+- Created mobile app interfaces for iOS and Android platforms with 1M+ downloads.
+- Collaborated closely with frontend engineers to ensure pixel-perfect implementation.
+=============================================================================

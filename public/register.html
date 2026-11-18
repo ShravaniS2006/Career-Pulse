@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | CareerPulse</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand">
+        <div class="brand-icon">CP</div>
+        Career<span>Pulse</span>
+      </a>
+      <ul class="nav-links" id="nav-links"></ul>
+      <div class="nav-actions" id="nav-actions"></div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="auth-wrapper">
+      <div class="auth-card" style="max-width: 580px;">
+        
+        <div class="auth-header">
+          <h1 class="auth-title">Create Your Account</h1>
+          <p class="auth-subtitle">Join thousands of professionals and companies on CareerPulse.</p>
+        </div>
+
+        <!-- Role Selector Tabs -->
+        <div class="role-tabs">
+          <div class="role-tab-btn active" id="tab-seeker" onclick="selectRole('seeker')">
+            <span class="icon">👨‍💻</span>
+            <span>Job Seeker</span>
+          </div>
+          <div class="role-tab-btn" id="tab-recruiter" onclick="selectRole('recruiter')">
+            <span class="icon">🏢</span>
+            <span>Employer / Recruiter</span>
+          </div>
+        </div>
+
+        <!-- Registration Form -->
+        <form id="register-form">
+          <input type="hidden" id="reg-role" value="seeker">
+
+          <!-- Common Fields -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label" for="reg-name">Full Name *</label>
+              <input type="text" id="reg-name" class="form-control" placeholder="e.g. Arjun Patel" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-phone">Phone Number</label>
+              <input type="tel" id="reg-phone" class="form-control" placeholder="+91 98765 43210">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email Address *</label>
+            <input type="email" id="reg-email" class="form-control" placeholder="name@domain.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Password *</label>
+            <input type="password" id="reg-password" class="form-control" placeholder="Minimum 6 characters" minlength="6" required>
+          </div>
+
+          <!-- Seeker-Specific Fields -->
+          <div id="seeker-fields">
+            <div class="form-group">
+              <label class="form-label" for="reg-title">Professional Headline / Target Role</label>
+              <input type="text" id="reg-title" class="form-control" placeholder="e.g. Full Stack Developer, Product Designer">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-skills">Key Skills (comma separated)</label>
+              <input type="text" id="reg-skills" class="form-control" placeholder="React, Node.js, JavaScript, Python, SQL">
+              <div class="form-hint">These skills help recruiters discover your profile.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-bio">Brief Bio / Career Summary</label>
+              <textarea id="reg-bio" class="form-control" placeholder="Tell employers about your experience and what roles you are seeking..."></textarea>
+            </div>
+          </div>
+
+          <!-- Recruiter-Specific Fields -->
+          <div id="recruiter-fields" style="display: none;">
+            <div style="padding: 14px; background: #eff6ff; border-radius: var(--radius-md); margin-bottom: 18px; border: 1px solid #bfdbfe;">
+              <strong style="color: #1e40af; font-size: 14px;">🏢 Company Profile Details</strong>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-company-name">Company Name *</label>
+              <input type="text" id="reg-company-name" class="form-control" placeholder="e.g. Nexus Tech India">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div class="form-group">
+                <label class="form-label" for="reg-company-website">Company Website</label>
+                <input type="url" id="reg-company-website" class="form-control" placeholder="https://example.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="reg-company-industry">Industry</label>
+                <input type="text" id="reg-company-industry" class="form-control" placeholder="e.g. FinTech, Healthcare">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-company-location">Company Headquarters</label>
+              <input type="text" id="reg-company-location" class="form-control" placeholder="e.g. Bengaluru, KA or Remote">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-company-desc">About the Company</label>
+              <textarea id="reg-company-desc" class="form-control" placeholder="Briefly describe what your company does, company culture, mission..."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" id="btn-reg-submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 14px;">
+            Create Free Account
+          </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 24px; font-size: 14px; color: var(--text-muted);">
+          Already have an account? <a href="/login.html" style="font-weight: 700;">Log in here</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">&copy; 2026 CareerPulse Job Portal. Node.js Fullstack.</div>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    function selectRole(role) {
+      document.getElementById('reg-role').value = role;
+      const tabSeeker = document.getElementById('tab-seeker');
+      const tabRecruiter = document.getElementById('tab-recruiter');
+      const seekerFields = document.getElementById('seeker-fields');
+      const recruiterFields = document.getElementById('recruiter-fields');
+      const compNameInput = document.getElementById('reg-company-name');
+
+      if (role === 'recruiter') {
+        tabRecruiter.classList.add('active');
+        tabSeeker.classList.remove('active');
+        seekerFields.style.display = 'none';
+        recruiterFields.style.display = 'block';
+        compNameInput.required = true;
+      } else {
+        tabSeeker.classList.add('active');
+        tabRecruiter.classList.remove('active');
+        seekerFields.style.display = 'block';
+        recruiterFields.style.display = 'none';
+        compNameInput.required = false;
+      }
+    }
+
+    // Auto-detect role from query string
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('role') === 'recruiter') {
+        selectRole('recruiter');
+      }
+    });
+
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const role = document.getElementById('reg-role').value;
+      const name = document.getElementById('reg-name').value.trim();
+      const phone = document.getElementById('reg-phone').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const password = document.getElementById('reg-password').value;
+      const submitBtn = document.getElementById('btn-reg-submit');
+
+      const payload = { role, name, phone, email, password };
+
+      if (role === 'seeker') {
+        payload.title = document.getElementById('reg-title').value.trim();
+        payload.skills = document.getElementById('reg-skills').value.trim();
+        payload.bio = document.getElementById('reg-bio').value.trim();
+      } else {
+        payload.companyName = document.getElementById('reg-company-name').value.trim();
+        payload.companyWebsite = document.getElementById('reg-company-website').value.trim();
+        payload.companyIndustry = document.getElementById('reg-company-industry').value.trim();
+        payload.companyLocation = document.getElementById('reg-company-location').value.trim();
+        payload.companyDescription = document.getElementById('reg-company-desc').value.trim();
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating account...';
+
+      try {
+        const res = await api.post('/auth/register', payload);
+        api.setToken(res.token);
+        api.setUser(res.user);
+        showToast('Account created successfully!', 'success');
+
+        setTimeout(() => {
+          if (role === 'recruiter') {
+            window.location.href = '/recruiter-dashboard.html';
+          } else {
+            window.location.href = '/seeker-dashboard.html';
+          }
+        }, 700);
+      } catch (err) {
+        showToast(err.message || 'Registration failed.', 'error');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Create Free Account';
+      }
+    });
+  </script>
+</body>
+</html>

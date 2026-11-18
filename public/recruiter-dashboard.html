@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recruiter Dashboard | CareerPulse</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand">
+        <div class="brand-icon">CP</div>
+        Career<span>Pulse</span>
+      </a>
+      <ul class="nav-links" id="nav-links"></ul>
+      <div class="nav-actions" id="nav-actions"></div>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-profile">
+        <div class="sidebar-avatar" id="recruiter-avatar">PS</div>
+        <div>
+          <div class="sidebar-user-name" id="recruiter-name">Priya Sharma</div>
+          <div class="sidebar-user-role" id="recruiter-company">Nexus Tech India</div>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li>
+          <button class="sidebar-link active" data-tab="manage-jobs">
+            <span class="icon">💼</span>
+            <span>Manage Jobs</span>
+            <span class="count-badge" id="badge-my-jobs-count">0</span>
+          </button>
+        </li>
+        <li>
+          <button class="sidebar-link" data-tab="post-job">
+            <span class="icon">➕</span>
+            <span>Post New Job</span>
+          </button>
+        </li>
+        <li>
+          <button class="sidebar-link" data-tab="applicants">
+            <span class="icon">👥</span>
+            <span>View Applicants</span>
+            <span class="count-badge" id="badge-total-applicants">0</span>
+          </button>
+        </li>
+        <li>
+          <button class="sidebar-link" data-tab="company">
+            <span class="icon">🏢</span>
+            <span>Company Profile</span>
+          </button>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      
+      <!-- Top Metrics -->
+      <div class="stat-cards-grid">
+        <div class="stat-card">
+          <div class="stat-card-info">
+            <h4>Active Postings</h4>
+            <div class="stat-number" id="rec-stat-active-jobs">0</div>
+          </div>
+          <div class="stat-card-icon blue">💼</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-info">
+            <h4>Total Applicants</h4>
+            <div class="stat-number" id="rec-stat-applicants">0</div>
+          </div>
+          <div class="stat-card-icon green">👥</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-info">
+            <h4>Shortlisted / Interviews</h4>
+            <div class="stat-number" id="rec-stat-shortlisted">0</div>
+          </div>
+          <div class="stat-card-icon purple">⭐</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-info">
+            <h4>Verification Status</h4>
+            <div class="stat-number" style="font-size: 20px; color: #10b981;" id="rec-stat-verified">Verified ✓</div>
+          </div>
+          <div class="stat-card-icon amber">🛡️</div>
+        </div>
+      </div>
+
+      <!-- TAB 1: MANAGE JOBS -->
+      <div id="tab-content-manage-jobs" class="tab-pane">
+        <div class="dashboard-card">
+          <div class="card-header-bar">
+            <div>
+              <h2 class="card-header-title">My Posted Jobs</h2>
+              <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
+                Review, edit, or close your published job openings.
+              </p>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="document.querySelector('[data-tab=post-job]').click()">+ Post New Job</button>
+          </div>
+
+          <div class="card-body-content">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Job Title</th>
+                    <th>Category & Type</th>
+                    <th>Salary</th>
+                    <th>Applicants</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="recruiter-jobs-tbody">
+                  <tr>
+                    <td colspan="6" style="text-align: center; color: var(--text-muted);">Loading jobs...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: POST NEW JOB -->
+      <div id="tab-content-post-job" class="tab-pane" style="display: none;">
+        <div class="dashboard-card">
+          <div class="card-header-bar">
+            <div>
+              <h2 class="card-header-title">Publish a New Job Listing</h2>
+              <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
+                Reach qualified applicants by creating a detailed, transparent job posting.
+              </p>
+            </div>
+          </div>
+
+          <div class="card-body-content">
+            <form id="post-job-form">
+              <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px;">
+                <div class="form-group">
+                  <label class="form-label" for="job-title-input">Job Title *</label>
+                  <input type="text" id="job-title-input" class="form-control" placeholder="e.g. Senior Backend Engineer" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="job-category-select">Category *</label>
+                  <select id="job-category-select" class="form-control" required>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Design">Design</option>
+                    <option value="DevOps">DevOps</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Data & Analytics">Data & Analytics</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Sales">Sales</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+                <div class="form-group">
+                  <label class="form-label" for="job-type-select">Job Type *</label>
+                  <select id="job-type-select" class="form-control" required>
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Contract">Contract</option>
+                    <option value="Remote">Remote</option>
+                    <option value="Internship">Internship</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="job-location-input">Location *</label>
+                  <input type="text" id="job-location-input" class="form-control" placeholder="e.g. Bengaluru, KA or Remote" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="job-salary-input">Salary Range *</label>
+                  <input type="text" id="job-salary-input" class="form-control" placeholder="e.g. ₹12,00,000 - ₹18,00,000 / yr (12 - 18 LPA)" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="job-exp-input">Experience Level</label>
+                <input type="text" id="job-exp-input" class="form-control" placeholder="e.g. 3+ Years">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="job-desc-input">Job Overview & Summary *</label>
+                <textarea id="job-desc-input" class="form-control" rows="4" placeholder="Describe the mission of the team, culture, and high-level goals..." required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="job-resp-input">Key Responsibilities (One per line)</label>
+                <textarea id="job-resp-input" class="form-control" rows="4" placeholder="Architect scalable microservices&#10;Write comprehensive unit & integration tests&#10;Collaborate with product and UX designers"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="job-req-input">Requirements & Qualifications (One per line)</label>
+                <textarea id="job-req-input" class="form-control" rows="4" placeholder="3+ years building full stack web applications&#10;Expertise in Node.js, Express, and modern JavaScript&#10;Experience with relational databases (PostgreSQL/MySQL)"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="job-ben-input">Benefits & Perks (One per line)</label>
+                <textarea id="job-ben-input" class="form-control" rows="3" placeholder="Comprehensive health, dental, and vision insurance&#10;401(k) retirement matching&#10;Flexible remote work schedule"></textarea>
+              </div>
+
+              <button type="submit" id="btn-publish-job" class="btn btn-primary btn-lg">Publish Job Opening</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: VIEW APPLICANTS & UPDATE STATUS -->
+      <div id="tab-content-applicants" class="tab-pane" style="display: none;">
+        <div class="dashboard-card">
+          <div class="card-header-bar">
+            <div>
+              <h2 class="card-header-title">Candidate Applications</h2>
+              <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
+                Review candidate resumes, evaluate cover notes, and update their pipeline status.
+              </p>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+              <select id="filter-app-job-select" class="form-control" style="width: auto; font-size: 13px; padding: 6px 12px;">
+                <option value="all">All Jobs</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="card-body-content">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Candidate</th>
+                    <th>Position Applied</th>
+                    <th>Resume / CV</th>
+                    <th>Date Applied</th>
+                    <th>Current Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="recruiter-applicants-tbody">
+                  <tr>
+                    <td colspan="6" style="text-align: center; color: var(--text-muted);">Loading applicants...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: COMPANY PROFILE -->
+      <div id="tab-content-company" class="tab-pane" style="display: none;">
+        <div class="dashboard-card">
+          <div class="card-header-bar">
+            <div>
+              <h2 class="card-header-title">Company Profile Details</h2>
+              <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
+                Keep your company information updated to build trust with candidates.
+              </p>
+            </div>
+          </div>
+
+          <div class="card-body-content">
+            <form id="recruiter-company-form" style="max-width: 650px;">
+              <div class="form-group">
+                <label class="form-label">Company Name *</label>
+                <input type="text" id="comp-name" class="form-control" required>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div class="form-group">
+                  <label class="form-label">Website</label>
+                  <input type="url" id="comp-website" class="form-control" placeholder="https://company.com">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Industry</label>
+                  <input type="text" id="comp-industry" class="form-control" placeholder="e.g. Software, Cloud">
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div class="form-group">
+                  <label class="form-label">Company Size</label>
+                  <input type="text" id="comp-size" class="form-control" placeholder="e.g. 50-100 employees">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Headquarters Location</label>
+                  <input type="text" id="comp-location" class="form-control" placeholder="e.g. Austin, TX">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Company Description</label>
+                <textarea id="comp-desc" class="form-control" rows="4"></textarea>
+              </div>
+
+              <button type="submit" id="btn-save-company" class="btn btn-primary">Save Company Profile</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Review & Update Applicant Status Modal -->
+  <div class="modal-backdrop" id="update-status-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Review Candidate & Update Status</h3>
+        <button type="button" class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <form id="update-status-form">
+        <input type="hidden" id="status-app-id">
+        <div class="modal-body">
+          <div id="applicant-detail-preview" style="padding: 14px 18px; background: #f8fafc; border-radius: var(--radius-md); border: 1px solid var(--border); margin-bottom: 20px;">
+            <!-- Rendered dynamically -->
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="status-select">Update Application Status *</label>
+            <select id="status-select" class="form-control" required>
+              <option value="Applied">Applied (Pending Review)</option>
+              <option value="Under Review">Under Review</option>
+              <option value="Shortlisted">Shortlisted</option>
+              <option value="Interviewing">Interviewing</option>
+              <option value="Hired">Hired / Accepted</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="status-notes">Recruiter Feedback / Notes (Visible to candidate)</label>
+            <textarea id="status-notes" class="form-control" rows="3" placeholder="e.g. Scheduled technical round for Tuesday at 10 AM, or thank candidate for their time..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+          <button type="submit" id="btn-save-status" class="btn btn-primary">Save Status Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Job Modal -->
+  <div class="modal-backdrop" id="edit-job-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Edit Job Listing</h3>
+        <button type="button" class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <form id="edit-job-form">
+        <input type="hidden" id="edit-job-id">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Job Title *</label>
+            <input type="text" id="edit-job-title" class="form-control" required>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <select id="edit-job-category" class="form-control">
+                <option value="Engineering">Engineering</option>
+                <option value="Design">Design</option>
+                <option value="DevOps">DevOps</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Data & Analytics">Data & Analytics</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Job Type</label>
+              <select id="edit-job-type" class="form-control">
+                <option value="Full-time">Full-time</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Contract">Contract</option>
+                <option value="Remote">Remote</option>
+              </select>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="form-group">
+              <label class="form-label">Location</label>
+              <input type="text" id="edit-job-location" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Salary</label>
+              <input type="text" id="edit-job-salary" class="form-control" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="edit-job-desc" class="form-control" rows="4" required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Status</label>
+            <select id="edit-job-status" class="form-control">
+              <option value="active">Active (Open for applications)</option>
+              <option value="closed">Closed</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/recruiter.js"></script>
+</body>
+</html>

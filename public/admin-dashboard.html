@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | CareerPulse Control Center</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand">
+        <div class="brand-icon">CP</div>
+        Career<span>Pulse</span> <span style="font-size: 11px; background: #fee2e2; color: #b91c1c; padding: 2px 8px; border-radius: var(--radius-full); margin-left: 6px;">ADMIN</span>
+      </a>
+      <ul class="nav-links" id="nav-links"></ul>
+      <div class="nav-actions" id="nav-actions"></div>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-profile" style="background: #fef2f2; border-color: #fecaca;">
+        <div class="sidebar-avatar" style="background: linear-gradient(135deg, #ef4444, #dc2626);" id="admin-avatar">RS</div>
+        <div>
+          <div class="sidebar-user-name" id="admin-name">Rajesh Sharma</div>
+          <div class="sidebar-user-role" style="color: #b91c1c; font-weight: 700;">Website Owner & Admin</div>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li>
+          <button class="sidebar-link active" data-tab="overview">
+            <span class="icon">📊</span>
+            <span>Platform Overview</span>
+          </button>
+        </li>
+        <li>
+          <button class="sidebar-link" data-tab="fake-jobs" style="color: #b91c1c; font-weight: 700;">
+            <span class="icon">🚨</span>
+            <span>Fake Job Posts Queue</span>
+            <span class="count-badge" id="badge-fake-count" style="background: #ef4444; color: #fff;">0</span>
+          </button>
+        </li>
+        <li>
+          <button class="sidebar-link" data-tab="users">
+            <span class="icon">👥</span>
+            <span>Manage Users</span>
+            <span class="count-badge" id="badge-user-count">0</span>
+          </button>
+        </li>
+        <li>
+          <button class="sidebar-link" data-tab="companies">
+            <span class="icon">🏢</span>
+            <span>Manage Companies</span>
+            <span class="count-badge" id="badge-comp-count">0</span>
+          </button>
+        </li>
+        <li>
+          <button class="sidebar-link" data-tab="jobs">
+            <span class="icon">💼</span>
+            <span>Manage All Jobs</span>
+            <span class="count-badge" id="badge-job-count">0</span>
+          </button>
+        </li>
+        <li>
+          <button class="sidebar-link" data-tab="applications">
+            <span class="icon">📑</span>
+            <span>View All Applications</span>
+            <span class="count-badge" id="badge-app-count">0</span>
+          </button>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      
+      <!-- Top Metrics -->
+      <div class="stat-cards-grid">
+        <div class="stat-card">
+          <div class="stat-card-info">
+            <h4>Total Users</h4>
+            <div class="stat-number" id="adm-stat-users">0</div>
+          </div>
+          <div class="stat-card-icon blue">👥</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-info">
+            <h4>Companies</h4>
+            <div class="stat-number" id="adm-stat-companies">0</div>
+          </div>
+          <div class="stat-card-icon amber">🏢</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-info">
+            <h4>Total Jobs</h4>
+            <div class="stat-number" id="adm-stat-jobs">0</div>
+          </div>
+          <div class="stat-card-info" style="margin-left: 10px;">
+            <div class="stat-card-icon purple">💼</div>
+          </div>
+        </div>
+
+        <div class="stat-card" style="border: 2px solid #fecaca; background: #fff5f5;">
+          <div class="stat-card-info">
+            <h4 style="color: #b91c1c;">Fake / Flagged Jobs</h4>
+            <div class="stat-number" style="color: #dc2626;" id="adm-stat-fake">0</div>
+          </div>
+          <div class="stat-card-icon red">🚨</div>
+        </div>
+      </div>
+
+      <!-- TAB 1: OVERVIEW -->
+      <div id="tab-content-overview" class="tab-pane">
+        <div class="dashboard-card">
+          <div class="card-header-bar">
+            <div>
+              <h2 class="card-header-title">System Status & Quick Actions</h2>
+              <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
+                Platform moderation summary and fast navigation shortcuts.
+              </p>
+            </div>
+          </div>
+
+          <div class="card-body-content">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+              
+              <div style="padding: 20px; border-radius: var(--radius-md); border: 2px solid #fecaca; background: #fff5f5;">
+                <div style="font-size: 24px; margin-bottom: 8px;">🚨</div>
+                <h3 style="font-size: 16px; font-weight: 700; color: #b91c1c; margin-bottom: 4px;">Fake Job Detection Alert</h3>
+                <p style="font-size: 13px; color: #7f1d1d; margin-bottom: 16px;">
+                  Community reports and scam keyword filters have flagged suspicious postings requiring admin moderation.
+                </p>
+                <button class="btn btn-danger btn-sm" onclick="document.querySelector('[data-tab=fake-jobs]').click()">
+                  Review & Delete Fake Jobs &rarr;
+                </button>
+              </div>
+
+              <div style="padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border); background: #f8fafc;">
+                <div style="font-size: 24px; margin-bottom: 8px;">👥</div>
+                <h3 style="font-size: 16px; font-weight: 700; color: var(--secondary); margin-bottom: 4px;">User Management</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+                  Inspect registered candidates and recruiters. Suspend violating accounts or delete them.
+                </p>
+                <button class="btn btn-outline btn-sm" onclick="document.querySelector('[data-tab=users]').click()">
+                  Manage Users &rarr;
+                </button>
+              </div>
+
+              <div style="padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border); background: #f8fafc;">
+                <div style="font-size: 24px; margin-bottom: 8px;">🏢</div>
+                <h3 style="font-size: 16px; font-weight: 700; color: var(--secondary); margin-bottom: 4px;">Company Verification</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+                  Review hiring companies, inspect their web presence, and grant the Verified Trust Badge.
+                </p>
+                <button class="btn btn-outline btn-sm" onclick="document.querySelector('[data-tab=companies]').click()">
+                  Manage Companies &rarr;
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: DELETE FAKE JOB POSTS (SPECIAL HIGH-PRIORITY ADMIN REQUIREMENT) -->
+      <div id="tab-content-fake-jobs" class="tab-pane" style="display: none;">
+        <div class="dashboard-card" style="border: 2px solid #fecaca;">
+          <div class="card-header-bar" style="background: #fff5f5; border-bottom: 1px solid #fecaca;">
+            <div>
+              <h2 class="card-header-title" style="color: #b91c1c;">
+                🚨 Delete Fake Job Posts & Scam Detection Queue
+              </h2>
+              <p style="font-size: 13px; color: #991b1b; margin-top: 2px;">
+                Review postings reported by job seekers or flagged for deceptive fee demands, unrealistic compensation, or suspicious recruitment.
+              </p>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="loadFakeJobs()">Refresh Queue</button>
+          </div>
+
+          <div class="card-body-content" id="fake-jobs-list-container">
+            <div style="text-align: center; padding: 40px; color: var(--text-muted);">
+              Loading flagged job postings...
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: MANAGE USERS -->
+      <div id="tab-content-users" class="tab-pane" style="display: none;">
+        <div class="dashboard-card">
+          <div class="card-header-bar" style="flex-wrap: wrap; gap: 12px;">
+            <div>
+              <h2 class="card-header-title">👑 Platform Users (Website Owner 360° Directory)</h2>
+              <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
+                Complete transparent overview of all Job Seekers and Recruiters: contact info, resumes, applications, companies, and jobs.
+              </p>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+              <input type="text" id="admin-users-search" class="form-control" placeholder="Search by name, email, phone, company..." style="width: 250px; font-size: 13px; padding: 6px 12px;">
+              <select id="filter-user-role" class="form-control" style="width: auto; font-size: 13px; padding: 6px 12px;">
+                <option value="all">All Roles</option>
+                <option value="seeker">Job Seekers Only</option>
+                <option value="recruiter">Recruiters Only</option>
+                <option value="admin">Administrators</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="card-body-content">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>User & Role</th>
+                    <th>Contact Details</th>
+                    <th>Headline / Company</th>
+                    <th>Resume / Jobs</th>
+                    <th>Status</th>
+                    <th>Admin Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-users-tbody">
+                  <tr>
+                    <td colspan="6" style="text-align: center; color: var(--text-muted);">Loading users...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: MANAGE COMPANIES -->
+      <div id="tab-content-companies" class="tab-pane" style="display: none;">
+        <div class="dashboard-card">
+          <div class="card-header-bar">
+            <div>
+              <h2 class="card-header-title">Registered Companies</h2>
+              <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
+                Manage company profiles, grant/revoke verified status, or remove fraudulent organizations.
+              </p>
+            </div>
+          </div>
+
+          <div class="card-body-content">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Company Name</th>
+                    <th>Industry & Location</th>
+                    <th>Website</th>
+                    <th>Jobs Posted</th>
+                    <th>Trust Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-companies-tbody">
+                  <tr>
+                    <td colspan="6" style="text-align: center; color: var(--text-muted);">Loading companies...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 5: MANAGE JOBS -->
+      <div id="tab-content-jobs" class="tab-pane" style="display: none;">
+        <div class="dashboard-card">
+          <div class="card-header-bar">
+            <div>
+              <h2 class="card-header-title">All Platform Jobs</h2>
+              <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
+                Inspect, modify, or remove any job opening listed on CareerPulse.
+              </p>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <input type="text" id="admin-jobs-search" class="form-control" placeholder="Search jobs by title or company..." style="width: 260px; font-size: 13px; padding: 6px 12px;">
+            </div>
+          </div>
+
+          <div class="card-body-content">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Job Title</th>
+                    <th>Company</th>
+                    <th>Category & Location</th>
+                    <th>Applicants</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-jobs-tbody">
+                  <tr>
+                    <td colspan="6" style="text-align: center; color: var(--text-muted);">Loading jobs...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 6: VIEW APPLICATIONS -->
+      <div id="tab-content-applications" class="tab-pane" style="display: none;">
+        <div class="dashboard-card">
+          <div class="card-header-bar">
+            <div>
+              <h2 class="card-header-title">System-wide Applications Ledger</h2>
+              <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
+                Complete real-time log of candidate applications across all companies.
+              </p>
+            </div>
+          </div>
+
+          <div class="card-body-content">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Candidate</th>
+                    <th>Company & Job Title</th>
+                    <th>Resume Attached</th>
+                    <th>Status</th>
+                    <th>Applied Date</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-applications-tbody">
+                  <tr>
+                    <td colspan="6" style="text-align: center; color: var(--text-muted);">Loading applications...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Delete Fake Job Confirmation Modal -->
+  <div class="modal-backdrop" id="delete-fake-modal">
+    <div class="modal-dialog">
+      <div class="modal-header" style="background: #fff5f5; border-bottom: 1px solid #fecaca;">
+        <h3 class="modal-title" style="color: #b91c1c;">⚠️ Delete Fake Job Post</h3>
+        <button type="button" class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <form id="delete-fake-form">
+        <input type="hidden" id="delete-fake-job-id">
+        <div class="modal-body">
+          <p style="font-size: 14px; color: var(--text-main); margin-bottom: 14px;">
+            Are you sure you want to permanently delete: <strong id="delete-fake-job-title" style="color: #b91c1c;">Job Title</strong>?
+          </p>
+
+          <div style="background: #fef2f2; border-left: 4px solid var(--danger); padding: 12px 16px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 13px; color: #7f1d1d; margin-bottom: 18px;">
+            This action immediately purges the job post from public search, deletes associated records, and protects candidates from scams.
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; cursor: pointer; color: #991b1b;">
+              <input type="checkbox" id="check-ban-recruiter" checked style="width: 18px; height: 18px;">
+              Also suspend the recruiter account responsible for this fraudulent post
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+          <button type="submit" id="btn-confirm-delete-fake" class="btn btn-danger">Confirm Delete Fake Job</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- User 360° Profile & All Information Modal (Website Owner View) -->
+  <div class="modal-backdrop" id="user-dossier-modal">
+    <div class="modal-dialog" style="max-width: 840px;">
+      <div class="modal-header" style="background: #f8fafc; border-bottom: 1px solid var(--border);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 22px;">👑</span>
+          <div>
+            <h3 class="modal-title" style="font-size: 18px; color: var(--secondary);">User Complete Dossier & All Information</h3>
+            <div style="font-size: 12px; color: var(--text-muted);">Website Owner Inspection View</div>
+          </div>
+        </div>
+        <button type="button" class="modal-close" data-modal-close>&times;</button>
+      </div>
+
+      <div class="modal-body" id="user-dossier-body">
+        <div style="text-align: center; padding: 40px; color: var(--text-muted);">
+          Loading user information...
+        </div>
+      </div>
+
+      <div class="modal-footer" id="user-dossier-footer" style="background: #f8fafc; justify-content: space-between;">
+        <div id="dossier-quick-actions" style="display: flex; gap: 8px;">
+          <!-- Populated by admin.js -->
+        </div>
+        <button type="button" class="btn btn-outline" data-modal-close>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

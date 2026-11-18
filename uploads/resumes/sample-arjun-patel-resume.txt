@@ -1,0 +1,39 @@
+=============================================================================
+ARJUN PATEL - FULL STACK DEVELOPER
+Email: arjun.patel@demo.com | Phone: +91 98765 43210 | GitHub: github.com/arjunp
+Location: Bengaluru, Karnataka, India | Portfolio: https://arjunpatel.dev
+=============================================================================
+
+SUMMARY
+-------
+Results-driven Full Stack Web Developer with 4+ years of experience designing,
+developing, and deploying modern web applications using JavaScript, Node.js,
+Express, React, and SQL/NoSQL databases. Proven track record in high-scale SaaS.
+
+TECHNICAL SKILLS
+----------------
+- Languages: JavaScript (ES6+), TypeScript, HTML5, CSS3, SQL, Python
+- Frontend: React.js, Redux, Next.js, Tailwind CSS, Responsive Design, Web APIs
+- Backend: Node.js, Express.js, RESTful APIs, GraphQL, JWT Authentication
+- Databases: PostgreSQL, MongoDB, SQLite, Redis
+- Tools & Cloud: Git, Docker, AWS (S3, EC2), Jest, Postman, Linux, CI/CD
+
+PROFESSIONAL EXPERIENCE
+-----------------------
+Senior Full Stack Engineer | Infosys Digital Labs, Bengaluru | 2022 - Present
+- Architected and built scalable microservices handling over 1M requests/day.
+- Developed real-time collaborative workspace interface using React & WebSockets.
+- Optimized database queries, reducing average API response latency by 42%.
+- Mentored junior engineers and conducted weekly code reviews.
+
+Software Engineer | Wipro Technologies, Bengaluru | 2020 - 2022
+- Built responsive user interfaces for 15+ client web applications.
+- Integrated payment gateways (UPI, Razorpay, Stripe) and third-party REST APIs.
+- Improved Lighthouse performance scores from 65 to 95 across all landing pages.
+
+EDUCATION
+---------
+B.Tech in Computer Science and Engineering | NIT Karnataka, Surathkal | 2016 - 2020
+- CGPA: 8.9/10.0
+- Lead organizer, National Technical Fest
+=============================================================================

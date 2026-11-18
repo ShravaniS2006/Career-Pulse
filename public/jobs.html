@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Jobs | CareerPulse</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand">
+        <div class="brand-icon">CP</div>
+        Career<span>Pulse</span>
+      </a>
+      <ul class="nav-links" id="nav-links"></ul>
+      <div class="nav-actions" id="nav-actions"></div>
+    </div>
+  </header>
+
+  <!-- Filter & Search Header -->
+  <div style="background: #ffffff; border-bottom: 1px solid var(--border); padding: 28px 0;">
+    <div class="container" style="padding-top: 0; padding-bottom: 0;">
+      <h1 style="font-size: 30px; font-weight: 800; color: var(--secondary); margin-bottom: 8px;">Explore Verified Job Opportunities</h1>
+      <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 20px;">Browse openings from trusted employers. Every posting is reviewed to prevent fraud.</p>
+
+      <form id="jobs-filter-form" style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <div style="flex: 2; min-width: 240px;">
+          <input type="text" id="filter-q" class="form-control" placeholder="Search by title, skill, or company...">
+        </div>
+        <div style="flex: 1; min-width: 160px;">
+          <select id="filter-category" class="form-control">
+            <option value="All">All Categories</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Design">Design</option>
+            <option value="DevOps">DevOps</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Data & Analytics">Data & Analytics</option>
+          </select>
+        </div>
+        <div style="flex: 1; min-width: 160px;">
+          <select id="filter-type" class="form-control">
+            <option value="All">All Job Types</option>
+            <option value="Full-time">Full-time</option>
+            <option value="Part-time">Part-time</option>
+            <option value="Contract">Contract</option>
+            <option value="Remote">Remote</option>
+          </select>
+        </div>
+        <div style="flex: 1; min-width: 160px;">
+          <input type="text" id="filter-location" class="form-control" placeholder="Location or 'Remote'">
+        </div>
+        <button type="submit" class="btn btn-primary" style="padding: 10px 24px;">Filter</button>
+        <button type="button" id="btn-reset-filters" class="btn btn-outline">Reset</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Jobs List Section -->
+  <main class="main-content">
+    <div class="container">
+      
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div style="font-size: 15px; font-weight: 600; color: var(--text-muted);">
+          Showing <span id="jobs-count" style="color: var(--secondary); font-weight: 700;">0</span> jobs
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 13px; color: var(--text-muted);">Sort by:</span>
+          <select id="sort-jobs" class="form-control" style="width: auto; padding: 6px 12px; font-size: 13px;">
+            <option value="newest">Newest First</option>
+            <option value="title">Job Title (A-Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="jobs-grid" id="jobs-container">
+        <!-- Rendered by jobs.js -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Apply Modal (Quick Apply with Resume Upload) -->
+  <div class="modal-backdrop" id="apply-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="apply-modal-title">Apply for Position</h3>
+        <button type="button" class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <form id="apply-job-form">
+        <input type="hidden" id="apply-job-id">
+        <div class="modal-body">
+          <div id="apply-job-meta" style="padding: 12px 16px; background: #eff6ff; border-radius: var(--radius-md); margin-bottom: 20px; font-size: 14px; color: #1e40af; border: 1px solid #bfdbfe;">
+            <!-- Rendered dynamically -->
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Resume / CV *</label>
+            <div id="resume-status-hint" style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;"></div>
+            <input type="file" id="apply-resume-file" class="form-control" accept=".pdf,.doc,.docx,.txt,.rtf">
+            <div class="form-hint">Accepted formats: PDF, DOC, DOCX, TXT (Max 10MB).</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="apply-cover-note">Cover Note / Why are you a great fit?</label>
+            <textarea id="apply-cover-note" class="form-control" placeholder="Introduce yourself, highlight relevant achievements, and pitch your qualifications..." rows="4"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+          <button type="submit" id="btn-submit-app" class="btn btn-primary">Submit Application</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Report Fake Job Modal -->
+  <div class="modal-backdrop" id="report-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" style="color: #b91c1c;">⚠️ Report Suspicious / Fake Job</h3>
+        <button type="button" class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <form id="report-job-form">
+        <input type="hidden" id="report-job-id">
+        <div class="modal-body">
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
+            Help keep our platform safe. If this job asks for upfront fees, offers unrealistic payments, or appears to be a scam, report it for immediate Admin review and deletion.
+          </p>
+
+          <div class="form-group">
+            <label class="form-label">Reason for reporting *</label>
+            <select id="report-reason-select" class="form-control" required>
+              <option value="">Select a reason...</option>
+              <option value="Asks for money / registration fee upfront">Asks for money / registration fee upfront</option>
+              <option value="Unrealistic pay / suspicious high salary claim">Unrealistic pay / suspicious high salary claim</option>
+              <option value="Fake or impersonating company">Fake or impersonating company</option>
+              <option value="Phishing / asking for sensitive financial information">Phishing / asking for sensitive financial info</option>
+              <option value="Spam or duplicate job posting">Spam or duplicate job posting</option>
+              <option value="Other scam activity">Other scam activity</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="report-details">Additional Details</label>
+            <textarea id="report-details" class="form-control" placeholder="Provide any details, links, or contact numbers mentioned in the posting..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+          <button type="submit" class="btn btn-danger">Submit Report to Admin</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">&copy; 2026 CareerPulse Job Portal. Node.js Fullstack.</div>
+      <ul class="footer-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/jobs.html">Browse Jobs</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/jobs.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+=============================================================================
+ANANYA IYER - SENIOR PRODUCT DESIGNER (UI/UX)
+Email: ananya.iyer@demo.com | Phone: +91 97654 32109 | Portfolio: behance.net/ananyaiyer
+Location: Mumbai, Maharashtra, India
+=============================================================================
+
+PROFILE
+-------
+Human-centered Senior UI/UX Designer with 5+ years of experience crafting
+scalable design systems, user flows, wireframes, and intuitive mobile & web
+experiences. Specialized in Fintech, B2B SaaS, and consumer applications.
+
+CORE COMPETENCIES
+-----------------
+- Design: User Research, Wireframing, Rapid Prototyping, Design Systems
+- Tools: Figma, FigJam, Adobe XD, Sketch, InVision, Zeplin, Miro
+- Technical: HTML5, CSS3, Modern UI frameworks, WCAG 2.1 AA Accessibility
+
+EXPERIENCE
+----------
+Lead UI/UX Designer | Tata Elxsi Design Studio, Mumbai | 2021 - Present
+- Spearheaded the redesign of enterprise billing & payment portal, boosting user retention by 28%.
+- Established comprehensive Figma Design System with 150+ reusable components.
+- Conducted 80+ user research sessions and usability test cycles across India.
+
+UI/UX Designer | Freshworks, Chennai | 2019 - 2021
+- Created mobile app interfaces for iOS and Android platforms with 2M+ active users.
+- Collaborated closely with frontend engineers to ensure pixel-perfect implementation.
+
+EDUCATION
+---------
+B.Des in Product & Communication Design | National Institute of Design (NID), Ahmedabad | 2015 - 2019
+=============================================================================

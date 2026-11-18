@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerPulse | Modern Job Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand">
+        <div class="brand-icon">CP</div>
+        Career<span>Pulse</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <!-- Rendered by auth.js -->
+      </ul>
+      <div class="nav-actions" id="nav-actions">
+        <!-- Rendered by auth.js -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container" style="padding-top: 0;">
+      <div class="hero-pill">✨ Over 10,000+ Verified Jobs & Verified Employers</div>
+      <h1 class="hero-title">Discover Your Next Career Move with <span>Confidence</span></h1>
+      <p class="hero-subtitle">Connect with top employers, explore high-paying roles, and track your applications in real-time. Safe, verified, and spam-free.</p>
+
+      <!-- Live Search Box -->
+      <form id="hero-search-form" class="search-box" action="/jobs.html" method="GET">
+        <div class="search-input-group">
+          <span class="search-icon">🔍</span>
+          <input type="text" name="q" id="search-query" class="search-input" placeholder="Job title, keywords, or company...">
+        </div>
+        <div class="search-input-group">
+          <span class="search-icon">📍</span>
+          <input type="text" name="location" id="search-location" class="search-input" placeholder="City or 'Remote'...">
+        </div>
+        <div class="search-input-group">
+          <span class="search-icon">📂</span>
+          <select name="category" id="search-category" class="search-select">
+            <option value="">All Categories</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Design">Design</option>
+            <option value="DevOps">DevOps</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Data & Analytics">Data & Analytics</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Search Jobs</button>
+      </form>
+
+      <!-- Stats Banner -->
+      <div class="stats-banner">
+        <div class="stat-item">
+          <div class="stat-num" id="stat-active-jobs">1,240+</div>
+          <div class="stat-label">Active Job Openings</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="stat-companies">480+</div>
+          <div class="stat-label">Verified Companies</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="stat-seekers">24,000+</div>
+          <div class="stat-label">Talented Job Seekers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" style="color: #10b981;">100%</div>
+          <div class="stat-label">Verified & Safe Posts</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- Featured Jobs Section -->
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Featured Opportunities</h2>
+          <p class="section-desc">Hand-picked roles from top verified companies hiring right now.</p>
+        </div>
+        <a href="/jobs.html" class="btn btn-outline-primary">View All Jobs &rarr;</a>
+      </div>
+
+      <div class="jobs-grid" id="featured-jobs-grid">
+        <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted);">
+          Loading featured jobs...
+        </div>
+      </div>
+
+      <!-- User Role Pathways Section -->
+      <div style="margin-top: 60px; padding: 40px; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+        <div style="text-align: center; max-width: 650px; margin: 0 auto 36px;">
+          <h2 style="font-size: 28px; font-weight: 800; color: var(--secondary);">Built for Everyone in the Hiring Ecosystem</h2>
+          <p style="color: var(--text-muted); margin-top: 6px;">Tailored workflows for candidates, hiring managers, and portal administrators.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+          <!-- Card 1: Job Seeker -->
+          <div style="padding: 24px; border: 1px solid var(--border); border-radius: var(--radius-md); background: #f8fafc;">
+            <div style="font-size: 32px; margin-bottom: 12px;">👨‍💻</div>
+            <h3 style="font-size: 18px; font-weight: 700; color: var(--secondary); margin-bottom: 8px;">For Job Seekers</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">
+              <li>✓ Easy registration & quick resume upload</li>
+              <li>✓ Advanced filters (category, location, salary)</li>
+              <li>✓ Real-time application status tracker</li>
+              <li>✓ Zero spam with instant fake job reporting</li>
+            </ul>
+            <a href="/register.html?role=seeker" class="btn btn-outline btn-block">Join as Job Seeker</a>
+          </div>
+
+          <!-- Card 2: Recruiter -->
+          <div style="padding: 24px; border: 1px solid var(--border); border-radius: var(--radius-md); background: #f8fafc;">
+            <div style="font-size: 32px; margin-bottom: 12px;">🏢</div>
+            <h3 style="font-size: 18px; font-weight: 700; color: var(--secondary); margin-bottom: 8px;">For Recruiters & Companies</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">
+              <li>✓ Post rich job listings with custom requirements</li>
+              <li>✓ Manage listings, applicants & resumes</li>
+              <li>✓ Move candidates through review & hiring stages</li>
+              <li>✓ Company profile & verified credibility badge</li>
+            </ul>
+            <a href="/register.html?role=recruiter" class="btn btn-outline btn-block">Hire Top Talent</a>
+          </div>
+
+          <!-- Card 3: Admin -->
+          <div style="padding: 24px; border: 1px solid var(--border); border-radius: var(--radius-md); background: #f8fafc;">
+            <div style="font-size: 32px; margin-bottom: 12px;">🛡️</div>
+            <h3 style="font-size: 18px; font-weight: 700; color: var(--secondary); margin-bottom: 8px;">For Platform Admins</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">
+              <li>✓ Comprehensive User & Company management</li>
+              <li>✓ Monitor all platform applications & jobs</li>
+              <li>✓ Dedicated queue to <strong>Delete Fake Job Posts</strong></li>
+              <li>✓ One-click recruiter fraud suspension</li>
+            </ul>
+            <a href="/login.html" class="btn btn-outline btn-block">Admin Portal</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        &copy; 2026 CareerPulse Job Portal. Built with HTML, CSS, JavaScript & Node.js backend.
+      </div>
+      <ul class="footer-links">
+        <li><a href="/jobs.html">Browse Jobs</a></li>
+        <li><a href="/login.html">Login</a></li>
+        <li><a href="/register.html">Register</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

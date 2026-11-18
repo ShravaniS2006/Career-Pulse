@@ -1,0 +1,40 @@
+=============================================================================
+ALEX JOHNSON - FULL STACK DEVELOPER
+Email: alex.johnson@demo.com | Phone: +1 555-0192 | GitHub: github.com/alexj
+Location: San Francisco, CA | Portfolio: https://alexjohnson.dev
+=============================================================================
+
+SUMMARY
+-------
+Results-driven Full Stack Web Developer with 4+ years of experience designing,
+developing, and deploying modern web applications using JavaScript, Node.js,
+Express, React, and SQL/NoSQL databases. Passionate about clean code, high
+performance, and intuitive UI/UX.
+
+TECHNICAL SKILLS
+----------------
+- Languages: JavaScript (ES6+), TypeScript, HTML5, CSS3, SQL, Python
+- Frontend: React.js, Redux, Next.js, Tailwind CSS, Responsive Design, Web APIs
+- Backend: Node.js, Express.js, RESTful APIs, GraphQL, JWT Authentication
+- Databases: PostgreSQL, MongoDB, SQLite, Redis
+- Tools & Cloud: Git, Docker, AWS (S3, EC2), Jest, Postman, Linux, CI/CD
+
+PROFESSIONAL EXPERIENCE
+-----------------------
+Full Stack Software Engineer | Horizon Tech Labs | 2022 - Present
+- Architected and built scalable microservices handling over 500k requests/day.
+- Developed real-time collaborative workspace interface using React & WebSockets.
+- Optimized database queries, reducing average API response latency by 42%.
+- Mentored 4 junior developers and led weekly sprint retrospectives.
+
+Junior Frontend Developer | Stellar Interactive | 2020 - 2022
+- Built responsive user interfaces for 15+ client web applications.
+- Integrated payment gateways (Stripe) and third-party RESTful APIs.
+- Improved Lighthouse performance scores from 65 to 94 across all landing pages.
+
+EDUCATION
+---------
+B.S. in Computer Science | California State University | 2016 - 2020
+- Magna Cum Laude, GPA: 3.8/4.0
+- Lead organizer, Annual Campus Hackathon
+=============================================================================

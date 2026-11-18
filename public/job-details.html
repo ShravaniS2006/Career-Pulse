@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Details | CareerPulse</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand">
+        <div class="brand-icon">CP</div>
+        Career<span>Pulse</span>
+      </a>
+      <ul class="nav-links" id="nav-links"></ul>
+      <div class="nav-actions" id="nav-actions"></div>
+    </div>
+  </header>
+
+  <!-- Job Header Banner -->
+  <div style="background: #ffffff; border-bottom: 1px solid var(--border); padding: 36px 0;">
+    <div class="container" style="padding-top: 0; padding-bottom: 0;">
+      <div style="margin-bottom: 16px;">
+        <a href="/jobs.html" style="font-size: 14px; font-weight: 600; color: var(--text-muted);">&larr; Back to all jobs</a>
+      </div>
+
+      <div id="job-header-details" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: gap; gap: 24px;">
+        <div style="display: flex; gap: 20px; align-items: center;">
+          <div id="company-logo-large" class="company-logo" style="width: 68px; height: 68px; font-size: 26px;">CP</div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <span id="detail-company-name" style="font-size: 16px; font-weight: 700; color: var(--text-muted);">Company Name</span>
+              <span id="company-verified-tag" class="badge badge-success" style="display: none;">Verified Company</span>
+            </div>
+            <h1 id="detail-job-title" style="font-size: 28px; font-weight: 800; color: var(--secondary); margin-bottom: 8px;">Loading Job...</h1>
+            <div class="job-meta-row" style="margin-bottom: 0;">
+              <span class="job-meta-item" id="detail-job-location">📍 Location</span>
+              <span class="job-meta-item" id="detail-job-type">💼 Type</span>
+              <span class="job-meta-item" id="detail-job-salary" style="font-weight: 700; color: var(--primary);">💰 Salary</span>
+              <span class="job-meta-item" id="detail-job-exp">⭐ Experience</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <button type="button" class="btn btn-outline" id="btn-report-job" title="Report fake job" style="color: #b91c1c; border-color: #fecaca;">
+            ⚠️ Report Job
+          </button>
+          <button type="button" class="btn btn-primary btn-lg" id="btn-apply-main">
+            Apply for this Job &rarr;
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Job Content & Company Profile Grid -->
+  <main class="main-content">
+    <div class="container">
+      
+      <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 32px;" id="job-layout-grid">
+        
+        <!-- Left: Job Details -->
+        <div>
+          <!-- Job Description -->
+          <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 24px; box-shadow: var(--shadow-sm);">
+            <h2 style="font-size: 20px; font-weight: 700; color: var(--secondary); margin-bottom: 16px;">About the Role</h2>
+            <div id="detail-job-description" style="font-size: 15px; color: var(--text-main); line-height: 1.7; white-space: pre-line;">
+              Loading description...
+            </div>
+
+            <!-- Key Responsibilities -->
+            <div id="responsibilities-section" style="margin-top: 28px;">
+              <h3 style="font-size: 17px; font-weight: 700; color: var(--secondary); margin-bottom: 12px;">Key Responsibilities</h3>
+              <ul id="detail-responsibilities-list" style="list-style: disc; padding-left: 20px; font-size: 15px; color: var(--text-main); display: flex; flex-direction: column; gap: 8px;">
+              </ul>
+            </div>
+
+            <!-- Requirements -->
+            <div id="requirements-section" style="margin-top: 28px;">
+              <h3 style="font-size: 17px; font-weight: 700; color: var(--secondary); margin-bottom: 12px;">Required Qualifications & Skills</h3>
+              <ul id="detail-requirements-list" style="list-style: disc; padding-left: 20px; font-size: 15px; color: var(--text-main); display: flex; flex-direction: column; gap: 8px;">
+              </ul>
+            </div>
+
+            <!-- Benefits -->
+            <div id="benefits-section" style="margin-top: 28px;">
+              <h3 style="font-size: 17px; font-weight: 700; color: var(--secondary); margin-bottom: 12px;">Benefits & Perks</h3>
+              <ul id="detail-benefits-list" style="list-style: disc; padding-left: 20px; font-size: 15px; color: var(--text-main); display: flex; flex-direction: column; gap: 8px;">
+              </ul>
+            </div>
+
+            <div style="margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 13px; color: var(--text-muted);">Posted on <span id="detail-posted-date">-</span></span>
+              <button type="button" class="btn btn-primary" onclick="document.getElementById('btn-apply-main').click()">Apply Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Company Profile Sidebar -->
+        <div>
+          <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-sm); position: sticky; top: 96px;">
+            <h3 style="font-size: 18px; font-weight: 700; color: var(--secondary); margin-bottom: 16px;">About the Company</h3>
+            
+            <div id="company-sidebar-info">
+              <div style="font-size: 16px; font-weight: 700; color: var(--secondary);" id="side-company-name">Company</div>
+              <p style="font-size: 13px; color: var(--text-muted); margin: 8px 0 16px; line-height: 1.5;" id="side-company-desc">
+                Company description...
+              </p>
+
+              <div style="display: flex; flex-direction: column; gap: 12px; font-size: 14px; border-top: 1px solid var(--border); padding-top: 16px;">
+                <div>
+                  <span style="color: var(--text-muted); display: block; font-size: 12px;">INDUSTRY</span>
+                  <strong id="side-company-industry">-</strong>
+                </div>
+                <div>
+                  <span style="color: var(--text-muted); display: block; font-size: 12px;">COMPANY SIZE</span>
+                  <strong id="side-company-size">-</strong>
+                </div>
+                <div>
+                  <span style="color: var(--text-muted); display: block; font-size: 12px;">HEADQUARTERS</span>
+                  <strong id="side-company-loc">-</strong>
+                </div>
+                <div>
+                  <span style="color: var(--text-muted); display: block; font-size: 12px;">WEBSITE</span>
+                  <a href="#" target="_blank" id="side-company-web" style="word-break: break-all;">Visit Website &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Safe Hiring Notice -->
+            <div style="margin-top: 24px; padding: 14px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-size: 12px; color: var(--text-muted);">
+              🛡️ <strong>Safety Guarantee:</strong> Legitimate companies never request upfront payments or software purchases. If asked, report immediately.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Apply Modal -->
+  <div class="modal-backdrop" id="apply-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="apply-modal-title">Apply for Position</h3>
+        <button type="button" class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <form id="apply-job-form">
+        <input type="hidden" id="apply-job-id">
+        <div class="modal-body">
+          <div id="apply-job-meta" style="padding: 12px 16px; background: #eff6ff; border-radius: var(--radius-md); margin-bottom: 20px; font-size: 14px; color: #1e40af; border: 1px solid #bfdbfe;"></div>
+
+          <div class="form-group">
+            <label class="form-label">Resume / CV *</label>
+            <div id="resume-status-hint" style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;"></div>
+            <input type="file" id="apply-resume-file" class="form-control" accept=".pdf,.doc,.docx,.txt,.rtf">
+            <div class="form-hint">Accepted formats: PDF, DOC, DOCX, TXT.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="apply-cover-note">Cover Note / Why are you a great fit?</label>
+            <textarea id="apply-cover-note" class="form-control" placeholder="Introduce yourself and describe why you are excited about this opportunity..." rows="4"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+          <button type="submit" id="btn-submit-app" class="btn btn-primary">Submit Application</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Report Modal -->
+  <div class="modal-backdrop" id="report-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" style="color: #b91c1c;">⚠️ Report Fake / Suspicious Job</h3>
+        <button type="button" class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <form id="report-job-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Reason *</label>
+            <select id="report-reason-select" class="form-control" required>
+              <option value="">Select a reason...</option>
+              <option value="Demands upfront payment or registration fee">Demands upfront payment or fee</option>
+              <option value="Unrealistic pay / suspicious high salary claim">Unrealistic pay / suspicious high salary</option>
+              <option value="Fake or impersonating company">Fake or impersonating company</option>
+              <option value="Phishing for personal identity/banking data">Phishing for personal/banking data</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Details</label>
+            <textarea id="report-details" class="form-control" placeholder="Describe the suspicious content..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+          <button type="submit" class="btn btn-danger">Submit Report</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">&copy; 2026 CareerPulse Job Portal. Node.js Fullstack.</div>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/job-details.js"></script>
+</body>
+</html>
